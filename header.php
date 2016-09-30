@@ -1,20 +1,35 @@
+<?php
+/**
+ * The template for displaying the header
+ *
+ * Displays all of the head element and everything up until the "site-content" div.
+ *
+ * @package WordPress
+ * @subpackage Meshki_Wordpress
+ * @since  0.0.1
+ */
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
   <head>
-    <meta charset="utf-8">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <?php endif; ?>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Template for Meshki</title>
-
     <!-- Meshki CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/meshki/1.2.2/meshki.min.css" rel="stylesheet">
+    <!-- Font-Awesome CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="<?php bloginfo('template_directory');?>/blog.css" rel="stylesheet">
+    <link href="<?php bloginfo('template_directory');?>/css/styles.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -25,7 +40,7 @@
     <?php wp_head();?>
   </head>
 
-  <body>
+  <body <?php body_class(); ?>>
 
     <div class="sidenav push">
       <!-- Note that javascript:void(0) stops your page from jumping to the top -->
