@@ -27,9 +27,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/meshki/1.2.2/meshki.min.css" rel="stylesheet">
     <!-- Font-Awesome CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- Style.css File -->
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
 
-    <!-- Custom styles for this template -->
-    <link href="<?php bloginfo('template_directory');?>/css/styles.css" rel="stylesheet">
+    <!-- Custom styles for this template
+    <link href="<?php bloginfo('template_directory');?>/css/styles.css" rel="stylesheet"> -->
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -42,7 +44,8 @@
 
   <body <?php body_class(); ?>>
 
-    <div class="sidenav push">
+  <?php if (has_nav_menu('sidenav')) : ?>
+    <div class="sidenav push" role="navigation">
       <!-- Note that javascript:void(0) stops your page from jumping to the top -->
       <a href="javascript:void(0)" class="sidenav-close-button" onclick="meshki.closeNav()">&times;</a>
       <a href="">Home</a>
@@ -52,6 +55,7 @@
       <hr>
       <a href="javascript:void(0)" disabled>Share on:</a>
     </div>
+  <?php endif; ?>
 
     <div class="content">
 
@@ -67,8 +71,7 @@
 
       <div class="container">
         <div class="row">
-          <h3 class="text-center">Blog Title</h3>
-          <p>Blog Description</p>
+          <h2 class="text-center title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
         </div>
 
         <!-- 2 <div>s need to be closed in footer -->
